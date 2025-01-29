@@ -15,7 +15,7 @@ var_http_secure_port: 443
 # Bad example
 http: 80
 ```
-
+See for more info about vars: https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_variables.html#variable-precedence-where-should-i-put-a-variable
 
 ### Booleans
 For Booleans you have multiple Options to set something on or of:
