@@ -28,6 +28,7 @@
 - run your playbooks from a centralized controller
 - use execution environments for frequently executed Ansible operations which require customizations in the form of collections, python dependencies, and system executables
 - for roles create an own git repo per role, for reusability. you can use requirements.yml to import these roles
+- Use ansible-lint to verify if your code match the best practices
 
 ## Variables
 When you create an variable, keep your variable names descriptive.
