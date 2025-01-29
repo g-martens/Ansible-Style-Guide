@@ -16,34 +16,34 @@ http: 80
 ```
 ### Variables precedence
 Ansible does apply variable precedence, and you might have a use for it. Here is the order of precedence from least to greatest (the last listed variables override all other variables):
-- command line values (for example, -u my_user, these are not variables) 1
-- role defaults (as defined in Role directory structure) 1
-- inventory file or script group vars 2
-- inventory group_vars/all 3
-- playbook group_vars/all 3
-- inventory group_vars/* 3
-- playbook group_vars/* 3
-- inventory file or script host vars 2
-- inventory host_vars/* 3
-- playbook host_vars/* 3
-- host facts / cached set_facts 4
-- play vars
-- play vars_prompt
-- play vars_files
-- role vars (as defined in Role directory structure)
-- block vars (only for tasks in block)
-- task vars (only for the task)
-- include_vars
-- set_facts / registered vars
-- role (and include_role) params
-- include params
-- extra vars (for example, -e "user=my_user")(always win precedence)
+1. command line values (for example, -u my_user, these are not variables) 1
+2. role defaults (as defined in Role directory structure) 1
+3. inventory file or script group vars 2
+4. inventory group_vars/all 3
+5. playbook group_vars/all 3
+6. inventory group_vars/* 3
+7. playbook group_vars/* 3
+8. inventory file or script host vars 2
+9. inventory host_vars/* 3
+10. playbook host_vars/* 3
+11. host facts / cached set_facts 4
+12. play vars
+13. play vars_prompt
+14. play vars_files
+15. role vars (as defined in Role directory structure)
+16. block vars (only for tasks in block)
+17. task vars (only for the task)
+18. include_vars
+19. set_facts / registered vars
+20. role (and include_role) params
+21. include params
+22. extra vars (for example, -e "user=my_user")(always win precedence)
 
 #### Footnotes
-- [1] Tasks in each role see their own role’s defaults. Tasks defined outside of a role see the last role’s defaults.
-- [2] (1,2) Variables defined in inventory file or provided by dynamic inventory.
-- [3] (1,2,3,4,5,6) Includes vars added by ‘vars plugins’ as well as host_vars and group_vars which are added by the default vars plugin shipped with Ansible.
-- [4] When created with set_facts’s cacheable option, variables have the high precedence in the play, but are the same as a host facts precedence when they come from the cache.
+1. Tasks in each role see their own role’s defaults. Tasks defined outside of a role see the last role’s defaults.
+2. **(1,2)** Variables defined in inventory file or provided by dynamic inventory.
+3. **(1,2,3,4,5,6)** Includes vars added by ‘vars plugins’ as well as host_vars and group_vars which are added by the default vars plugin shipped with Ansible.
+4. When created with set_facts’s cacheable option, variables have the high precedence in the play, but are the same as a host facts precedence when they come from the cache.
 
 
 See for more info about vars: https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_variables.html#variable-precedence-where-should-i-put-a-variable
