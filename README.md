@@ -5,9 +5,8 @@
 `-'  `-'`-' `-'`----'`-'`----'`----'`----'   `----' `-'  `--' `----'`----'    `---'`-----'`-'`----'`----'
 
 ```
-
-## Topics
-### Variables
+# Topics
+## Variables
 When you create an variable, keep your variable names descriptive.
 **Example:**
 ```yaml
@@ -18,7 +17,7 @@ var_http_secure_port: 443
 # Bad example
 http: 80
 ```
-### Variables precedence
+## Variables precedence
 Ansible does apply variable precedence, and you might have a use for it. Here is the order of precedence from least to greatest (the last listed variables override all other variables):
 1. command line values (for example, -u my_user, these are not variables) 1
 2. role defaults (as defined in Role directory structure) 1
@@ -43,7 +42,7 @@ Ansible does apply variable precedence, and you might have a use for it. Here is
 21. include params
 22. extra vars (for example, -e "user=my_user")(always win precedence)
 
-#### Footnotes
+### Footnotes
 1. Tasks in each role see their own role’s defaults. Tasks defined outside of a role see the last role’s defaults.
 2. **(1,2)** Variables defined in inventory file or provided by dynamic inventory.
 3. **(1,2,3,4,5,6)** Includes vars added by ‘vars plugins’ as well as host_vars and group_vars which are added by the default vars plugin shipped with Ansible.
@@ -52,7 +51,7 @@ Ansible does apply variable precedence, and you might have a use for it. Here is
 
 See for more info about vars: https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_variables.html#variable-precedence-where-should-i-put-a-variable
 
-### Booleans
+## Booleans
 For Booleans you have multiple Options to set something on or of:
 - True or False
 - Yes or No
@@ -66,7 +65,7 @@ I will use always True or False
 enabled: True
 ```
 
-### Comments
+## Comments
 Comments are Always starting with an # and an Space. after this, the first letter always have an uppercase
 
 **Example:**
@@ -74,8 +73,8 @@ Comments are Always starting with an # and an Space. after this, the first lette
 # This is an example of an comment
 ```
 
-### Modules
-#### FQCN
+## Modules
+### FQCN
 Always use the FQCN of an module
 
 **Example:**
@@ -83,7 +82,7 @@ Always use the FQCN of an module
 ansible.builtin.file:
 ```
 
-#### Task Description
+### Task Description
 It is important to make sure that the task name is exaclty what the task is doing.
 for this, think declarative. 
 
@@ -97,7 +96,7 @@ for this, think declarative.
     append: True
 ```
 
-#### Shell or command module
+### Shell or command module
 Only use this module when there is no module available for your task.
 If you have to use this module, make sure that you use error handling.
 You can use:
@@ -116,7 +115,7 @@ You can use:
 
 
 
-## Tips
+# Tips
 If you use VIM to edit your YAML files, use the following line in .vimrc
 
 **basic**
