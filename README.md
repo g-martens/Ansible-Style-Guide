@@ -19,6 +19,7 @@ http: 80
 ```
 ## Variables precedence
 Ansible does apply variable precedence, and you might have a use for it. Here is the order of precedence from least to greatest (the last listed variables override all other variables):
+
 1. command line values (for example, -u my_user, these are not variables) 1
 2. role defaults (as defined in Role directory structure) 1
 3. inventory file or script group vars 2
