@@ -4,8 +4,7 @@ On this page you can find my style Guide rules for ansible
 
 ## Items
 ### Variables
-When you create an variable, make sure the name of the variable is clear of where it is for:
-
+When you create an variable, keep your variable names descriptive.
 **Example:**
 ```yaml
 # Good Examples
