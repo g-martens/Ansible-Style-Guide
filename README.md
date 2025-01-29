@@ -2,7 +2,7 @@
 On this page you can find my style Guide rules for ansible
 
 
-## Items
+## Topics
 ### Variables
 When you create an variable, keep your variable names descriptive.
 **Example:**
