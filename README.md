@@ -27,7 +27,7 @@
 - avoid automating by logging in as root as transactions are harder to audit, use sudo instead
 - run your playbooks from a centralized controller
 - use execution environments for frequently executed Ansible operations which require customizations in the form of collections, python dependencies, and system executables
-
+- for roles create an own git repo per role, for reusability. you can use requirements.yml to import these roles
 
 ## Variables
 When you create an variable, keep your variable names descriptive.
