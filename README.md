@@ -87,6 +87,12 @@ I will use always True or False
 
 **Example:**
 ```yaml
+# Bad examples
+enabled: 1
+enabled: Y
+enabled: on
+
+# Good example
 enabled: True
 ```
 
@@ -95,7 +101,8 @@ Comments are Always starting with an # and an Space. after this, the first lette
 
 **Example:**
 ```yaml
-# This is an example of an comment
+#this comment is ugly
+# This is an Good example of an comment
 ```
 
 ## Modules
@@ -104,7 +111,11 @@ Always use the FQCN of an module
 
 **Example:**
 ```yaml
+# Bad example
 ansible.builtin.file:
+
+# Good Example
+file:
 ```
 
 ### Task Description
@@ -113,6 +124,15 @@ for this, think declarative.
 
 **Example:**
 ```yaml
+# Bad Example
+- name: Create user
+  ansible.builtin.user:
+    name: james
+    shell: /bin/bash
+    groups: admins,developers
+    append: True
+
+# Good Example
 - name: Make sure the user james exist, his default shell is bash, and he is member of the groups admins and developers
   ansible.builtin.user:
     name: james
@@ -130,14 +150,40 @@ You can use:
 
 **Example:**
 ```yaml
+# Bad example
+- name: print "Changed in screen"
+  ansible.builtin.shell: | 
+    echo "changed"
+
+# Good example
 - name: print "Changed in screen"
   ansible.builtin.shell: | 
     echo "changed"
   register: output
   changed_when: "'changed' in output.stdout"
+
 ```
 
+### Formating
+For readability, make sure that u use the module as last in the task.
+This means that if you use: when, loop, failed_when, changed_when, ok_when, register etc. this become before the tasks.
 
+```yaml
+# Bad Example
+- name: print "Changed in screen"
+  ansible.builtin.shell: | 
+    echo "changed"
+  register: output
+  changed_when: "'changed' in output.stdout"
+
+# Good example
+- name: print "Changed in screen"
+  register: output
+  changed_when: "'changed' in output.stdout"
+  ansible.builtin.shell: | 
+    echo "changed"
+
+```
 
 
 # Tips
