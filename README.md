@@ -7,7 +7,8 @@
 ```
 # Topics
 
-## Overall Recommendations
+## Recommendations
+### Overall
 - keep it simple, complexity kills productivity
 - optimize for readability, if something is easy to read then it's easy to understand and easy to troubleshoot
 - use a good editor like VSCode, VSCodium, Sublime Text Editor etc and even try vim-ansible
@@ -27,8 +28,17 @@
 - avoid automating by logging in as root as transactions are harder to audit, use sudo instead
 - run your playbooks from a centralized controller
 - use execution environments for frequently executed Ansible operations which require customizations in the form of collections, python dependencies, and system executables
-- for roles create an own git repo per role, for reusability. you can use requirements.yml to import these roles
 - Use ansible-lint to verify if your code match the best practices
+
+## Roles
+- Maintain each role in its own version control repository. Ansible works well with Git-based repositories.
+- Use variables to configure roles so that you can reuse the role to perform similar tasks in similar circumstances.
+- Avoid storing sensitive information in a role, such as passwords or SSH keys. Configure role variables that are used to contain sensitive values when called in a play with default values   that are not sensitive. Playbooks that use the role are responsible for defining sensitive variables through Ansible Vault variable files or other methods.
+- Use the ansible-galaxy role init command to start your role, and then remove any unnecessary files and directories.
+- Create and maintain README.md and meta/main.yml files to document the role's purpose, author, and usage.
+- Keep your role focused on a specific purpose or function. Instead of making one role do many things, write more than one role.
+- Reuse roles often.
+- Define dependencies in meta/main.yml
 
 ## Variables
 When you create an variable, keep your variable names descriptive.
