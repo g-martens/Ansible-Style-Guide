@@ -122,10 +122,10 @@ Always use the FQCN of an module
 **Example:**
 ```yaml
 # Bad example
-ansible.builtin.file:
+file:
 
 # Good Example
-file:
+ansible.builtin.file:
 ```
 
 ### Task Description
